@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/M-JD2-58-19.iml" filepath="$PROJECT_DIR$/.idea/M-JD2-58-19.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson4/parent/client/client.iml" filepath="$PROJECT_DIR$/lesson4/parent/client/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson2/parent/console/console.iml" filepath="$PROJECT_DIR$/lesson2/parent/console/console.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson2/parent/parent.iml" filepath="$PROJECT_DIR$/lesson2/parent/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson4/parent/parent (1) (clientserver).iml" filepath="$PROJECT_DIR$/lesson4/parent/parent (1) (clientserver).iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson4/parent/server/server.iml" filepath="$PROJECT_DIR$/lesson4/parent/server/server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson2/parent/service/service.iml" filepath="$PROJECT_DIR$/lesson2/parent/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson2/parent/util/util.iml" filepath="$PROJECT_DIR$/lesson2/parent/util/util.iml" />
+    </modules>
+  </component>
+</project>
