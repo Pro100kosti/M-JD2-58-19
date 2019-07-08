@@ -35,6 +35,7 @@ public class HelloMysqlTest extends DBTestCase {
             PreparedStatement ps = connection.prepareStatement("select * from system_users");
 
             ResultSet rs = ps.executeQuery();
+            assertNotNull(rs);
 
             int rawCount = 0;
             int activeUser = 0;
@@ -46,7 +47,9 @@ public class HelloMysqlTest extends DBTestCase {
             assertEquals(4, rawCount);
             assertEquals(2, activeUser);
 
-            assertNotNull(rs);
+            rs.close();
+            ps.close();
+            connection.close();
 
 
         } catch (SQLException e) {
