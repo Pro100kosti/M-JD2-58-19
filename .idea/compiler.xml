@@ -12,7 +12,7 @@
     <bytecodeTargetLevel>
       <module name="client" target="11" />
       <module name="console" target="11" />
-      <module name="hello-mysql" target="1.5" />
+      <module name="hello-mysql" target="11" />
       <module name="parent" target="11" />
       <module name="parent (1) (clientserver)" target="11" />
       <module name="server" target="11" />

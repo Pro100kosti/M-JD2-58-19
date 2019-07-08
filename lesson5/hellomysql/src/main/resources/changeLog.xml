@@ -24,6 +24,12 @@
         </sql>
     </changeSet>
 
+    <changeSet id="3" author="bolotko">
+        <sql>
+            alter table `system_users` add column `dateofbirth` long;
+        </sql>
+    </changeSet>
+
 
 
 </databaseChangeLog>
