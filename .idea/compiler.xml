@@ -6,13 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hello-mysql" />
+        <module name="hellotomcat" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="client" target="11" />
       <module name="console" target="11" />
       <module name="hello-mysql" target="11" />
+      <module name="hellotomcat" target="11" />
       <module name="parent" target="11" />
       <module name="parent (1) (clientserver)" target="11" />
       <module name="server" target="11" />
