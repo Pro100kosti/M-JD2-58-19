@@ -25,6 +25,16 @@
             <version>2.5.3</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.ibatis</groupId>
+            <artifactId>ibatis-core</artifactId>
+            <version>3.0</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -45,7 +55,7 @@
                         <goals>
                             <goal>update</goal>
                         </goals>
-                        <phase>process-resources</phase>
+                        <phase>process-sources</phase>
                         <configuration>
                             <changeLogFile>src/main/resources/changeLog.xml</changeLogFile>
                             <url>jdbc:mysql://localhost:3306/hello_mysql?createDatabaseIfNotExist=true&amp;useSSL=false</url>
@@ -59,13 +69,30 @@
                         <goals>
                             <goal>update</goal>
                         </goals>
-                        <phase>process-test-resources</phase>
+                        <phase>process-sources</phase>
                         <configuration>
                             <changeLogFile>src/main/resources/changeLog.xml</changeLogFile>
                             <url>jdbc:mysql://localhost:3306/hello_mysql_junit?createDatabaseIfNotExist=true&amp;useSSL=false</url>
                             <username>root</username>
                             <password>gjhjkmghjcnjrjcnb</password>
                             <driver>com.mysql.jdbc.Driver</driver>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.7</version>
+                <executions>
+                    <execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <overwrite>true</overwrite>
                         </configuration>
                     </execution>
                 </executions>

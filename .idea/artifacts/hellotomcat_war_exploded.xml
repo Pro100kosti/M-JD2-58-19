@@ -13,6 +13,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="hellotomcat" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.1" />
+          <element id="library" level="project" name="Maven: org.apache.ibatis:ibatis-core:3.0" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/lesson7/hellotomcat/target/hellotomcat-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />

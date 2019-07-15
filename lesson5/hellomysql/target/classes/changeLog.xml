@@ -26,10 +26,44 @@
 
     <changeSet id="3" author="bolotko">
         <sql>
-            alter table `system_users` add column `dateofbirth` long;
+            alter table `system_users` add column `dateofbirth` timestamp;
         </sql>
     </changeSet>
 
+    <changeSet id="4" author="bolotko">
+        <sql>
+            create table `clients` (
+            `client_id` integer not null,
+            `first_name` varchar(150),
+            `second_name` varchar(150),
+            `date_of_birth` timestamp,
+            `male_female` char(1),
+            `email` varchar(100)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="5" author="bolotko">
+        <sql>
+            create table `products` (
+            `product_id` integer not null,
+            `product_name` varchar(250),
+            `price` double(10,2),
+            `exists` boolean
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="6" author="bolotko">
+        <sql>
+            create table `orders` (
+            `order_id` integer not null,
+            `client_id` integer not null,
+            `product_id` integer not null,
+            `number` integer unsigned not null
+            );
+        </sql>
+    </changeSet>
 
 
 </databaseChangeLog>
