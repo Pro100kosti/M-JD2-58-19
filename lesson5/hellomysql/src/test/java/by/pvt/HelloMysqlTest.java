@@ -2,6 +2,8 @@ package by.pvt;
 
 import static org.junit.Assert.*;
 
+import by.pvt.dto.SystemUsers;
+import by.pvt.service.SystemUsersService;
 import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
@@ -10,6 +12,7 @@ import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.sql.*;
+import java.util.Date;
 
 public class HelloMysqlTest extends DBTestCase {
 
@@ -57,4 +60,110 @@ public class HelloMysqlTest extends DBTestCase {
         }
     }
 
+    @Test
+    public void testInsert() {
+        try {
+            Connection connection =
+                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "root");
+
+            SystemUsers systemUser = new SystemUsers();
+            systemUser.setId(6);
+            systemUser.setUsername("testUser");
+            systemUser.setActive(false);
+            systemUser.setDateofbirth(new Date());
+            new SystemUsersService().add(systemUser);
+
+            PreparedStatement ps = connection.prepareStatement("select * from system_users where id=6");
+            ResultSet rs = ps.executeQuery();
+
+            int id = 0;
+            String username = "";
+            boolean active = true;
+
+            while (rs.next()) {
+                id = rs.getInt("id");
+                username = rs.getString("username");
+                active = rs.getBoolean("active");
+            }
+
+            assertEquals(6, id);
+            assertEquals("testUser", username);
+            assertEquals(false, active);
+
+            rs.close();
+            ps.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testUpdate(){
+        try {
+            Connection connection =
+                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "root");
+
+            SystemUsers systemUser = new SystemUsers();
+            systemUser.setId(6);
+            systemUser.setUsername("UpdatedTestUser");
+            systemUser.setActive(true);
+            new SystemUsersService().update(systemUser);
+
+            PreparedStatement ps = connection.prepareStatement("select * from system_users where id=6");
+            ResultSet rs = ps.executeQuery();
+
+            int id = 0;
+            String username = "";
+            boolean active = true;
+
+            while (rs.next()) {
+                id = rs.getInt("id");
+                username = rs.getString("username");
+                active = rs.getBoolean("active");
+            }
+
+            assertEquals(6, id);
+            assertEquals("UpdatedTestUser", username);
+            assertEquals(true, active);
+
+            rs.close();
+            ps.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void testDelete(){
+        try {
+            Connection connection =
+                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "root");
+
+            new SystemUsersService().delete(6);
+
+            PreparedStatement ps = connection.prepareStatement("select * from system_users");
+            ResultSet rs = ps.executeQuery();
+
+            int rowCount = 0;
+
+            while (rs.next()) {
+                rowCount++;
+            }
+
+            assertEquals(1, rowCount);
+
+            rs.close();
+            ps.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

@@ -3,6 +3,7 @@ package by.pvt.service;
 import by.pvt.dao.SystemUsersMapper;
 import by.pvt.dto.SystemUsers;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -36,27 +37,63 @@ public class SystemUsersService {
     }
 
     public void add (SystemUsers systemUser) {
-        int result = sqlSessionFactory
-                .openSession()
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        int result = sqlSession
                 .getMapper(SystemUsersMapper.class)
                 .insert(systemUser);
+        sqlSession.commit();
+        sqlSession.close();
+
         log.info("Added new systemUser with result= " + result);
     }
 
-    public static void main(String[] args) {
-        SystemUsers systemUsers = new SystemUsers();
-        systemUsers.setId(2);
-        systemUsers.setUsername("User2");
-        systemUsers.setActive(false);
-        systemUsers.setDateofbirth(new Date());
+    public void delete (int id) {
 
-        new SystemUsersService().add(systemUsers);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        new SystemUsersService()
-                .getSystemUsers()
-                .forEach(user ->
-                        log.info(user.getId() + " "
-                                + user.getUsername() + " "
-                                + user.getActive()));
+        sqlSession
+                .getMapper(SystemUsersMapper.class)
+                .deleteByPrimaryKey(id);
+        sqlSession.commit();
+        sqlSession.close();
+
+        log.info("Deleted systemUser with id= " + id);
     }
+
+    public void update (SystemUsers systemUser) {
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        sqlSession
+                .getMapper(SystemUsersMapper.class)
+                .updateByPrimaryKey(systemUser);
+        sqlSession.commit();
+        sqlSession.close();
+
+        log.info("Updated systemUser with id= " + systemUser.getId());
+    }
+
+//    public static void main(String[] args) {
+//        SystemUsers systemUser = new SystemUsers();
+//        systemUser.setId(2);
+//        systemUser.setUsername("User2");
+//        systemUser.setActive(false);
+//        systemUser.setDateofbirth(new Date());
+//
+//        new SystemUsersService().add(systemUser);
+//
+//        systemUser.setUsername("Updated_User2");
+//        new SystemUsersService().update(systemUser);
+//
+//        new SystemUsersService()
+//                .getSystemUsers()
+//                .forEach(user ->
+//                        log.info(user.getId() + " "
+//                                + user.getUsername() + " "
+//                                + user.getActive()));
+//
+//        new SystemUsersService().delete(2);
+//    }
 }
