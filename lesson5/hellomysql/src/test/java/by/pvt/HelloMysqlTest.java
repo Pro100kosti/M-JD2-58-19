@@ -1,16 +1,14 @@
 package by.pvt;
 
-import static org.junit.Assert.*;
-
 import by.pvt.dto.SystemUsers;
 import by.pvt.service.SystemUsersService;
 import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.operation.DatabaseOperation;
 import org.junit.Test;
 
-import java.io.FileInputStream;
 import java.sql.*;
 import java.util.Date;
 
@@ -27,6 +25,11 @@ public class HelloMysqlTest extends DBTestCase {
     @Override
     protected IDataSet getDataSet() throws Exception {
         return new FlatXmlDataSetBuilder().build(HelloMysqlTest.class.getResourceAsStream("system_users.xml"));
+    }
+
+    @Override
+    protected DatabaseOperation getTearDownOperation() throws Exception {
+        return DatabaseOperation.DELETE;
     }
 
     @Test
@@ -64,7 +67,7 @@ public class HelloMysqlTest extends DBTestCase {
     public void testInsert() {
         try {
             Connection connection =
-                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "root");
+                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "gjhjkmghjcnjrjcnb");
 
             SystemUsers systemUser = new SystemUsers();
             systemUser.setId(6);
@@ -103,7 +106,7 @@ public class HelloMysqlTest extends DBTestCase {
     public void testUpdate(){
         try {
             Connection connection =
-                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "root");
+                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "gjhjkmghjcnjrjcnb");
 
             SystemUsers systemUser = new SystemUsers();
             systemUser.setId(6);
@@ -142,7 +145,7 @@ public class HelloMysqlTest extends DBTestCase {
     public void testDelete(){
         try {
             Connection connection =
-                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "root");
+                    DriverManager.getConnection("jdbc:mysql://localhost:3306/hello_mysql", "root", "gjhjkmghjcnjrjcnb");
 
             new SystemUsersService().delete(6);
 

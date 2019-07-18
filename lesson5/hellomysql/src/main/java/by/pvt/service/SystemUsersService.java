@@ -8,8 +8,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
-import java.util.Date;
+//import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +30,10 @@ public class SystemUsersService {
         }
     }
 
+    protected void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        this.sqlSessionFactory = sqlSessionFactory;
+    }
+
     public List<SystemUsers> getSystemUsers() {
         return sqlSessionFactory
                 .openSession()
@@ -36,7 +41,7 @@ public class SystemUsersService {
                 .selectByExample(null);
     }
 
-    public void add (SystemUsers systemUser) {
+    public void add(SystemUsers systemUser) {
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
@@ -49,7 +54,31 @@ public class SystemUsersService {
         log.info("Added new systemUser with result= " + result);
     }
 
-    public void delete (int id) {
+    public void addAll(List<SystemUsers> systemUsers) {
+        if (systemUsers == null) {
+            log.info("The input systemUsers is null");
+            return;
+        }
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        if (sqlSession == null){
+            log.info("Session is null");
+            return;
+        }
+        SystemUsersMapper dao = sqlSession.getMapper(SystemUsersMapper.class);
+        try {
+            systemUsers.stream()
+                    .filter(Objects::nonNull)
+                    .forEach(dao::insert);
+            sqlSession.commit();
+        } catch (Exception e) {
+            log.log(Level.WARNING, e.getMessage(), e);
+            sqlSession.rollback();
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+    public void delete(int id) {
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
@@ -62,7 +91,7 @@ public class SystemUsersService {
         log.info("Deleted systemUser with id= " + id);
     }
 
-    public void update (SystemUsers systemUser) {
+    public void update(SystemUsers systemUser) {
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
 

@@ -23,17 +23,21 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="6f08b665-321b-43e1-a003-55faad55185a">
+        <schema name="hello_mysql_junit" object-types="function, column, constraint, index, table, view, procedure, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="6f08b665-321b-43e1-a003-55faad55185a">
-      <console name="Connection" type="STANDARD" schema="hello_mysql" session="Main"><![CDATA[select
+      <console name="Connection" type="STANDARD" schema="hello_mysql" session="Main">select
     su.active,
     su.dateofbirth,
     su.id,
     su.username
 from
-    system_users su;]]></console>
+    system_users su;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
