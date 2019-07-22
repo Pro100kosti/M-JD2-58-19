@@ -2,6 +2,7 @@ package by.pvt;
 
 import by.pvt.dto.SystemUsers;
 import by.pvt.service.SystemUsersService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.List;
@@ -25,9 +26,14 @@ public class HelloWorldServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(200);
         resp.setHeader("Content-Type", "application/json");
+
         List<SystemUsers> users = systemUsersService.getSystemUsers();
-        System.out.println("User size= " + users.size());
-        resp.getWriter().print("{\"message\": \"hello, world!\"}");
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(users);
+        System.out.println("JSON output= " + json);
+
+        //resp.getWriter().print("{\"message\": \"hello, world!\"}");
+        resp.getWriter().print(json);
     }
 
 }

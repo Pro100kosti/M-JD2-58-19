@@ -2,6 +2,7 @@ package by.pvt.service;
 
 import by.pvt.dao.SystemUsersMapper;
 import by.pvt.dto.SystemUsers;
+import by.pvt.dto.SystemUsersExample;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -24,6 +25,7 @@ public class SystemUsersService {
         try {
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(
                     Resources.getResourceAsStream("by/pvt/service/mybatis-config.xml")
+                    //SystemUsersService.class.getResourceAsStream("mybatis-config.xml")
             );
         } catch (IOException e) {
             log.log(Level.SEVERE, e.getMessage(), e);
@@ -35,10 +37,19 @@ public class SystemUsersService {
     }
 
     public List<SystemUsers> getSystemUsers() {
-        return sqlSessionFactory
-                .openSession()
-                .getMapper(SystemUsersMapper.class)
-                .selectByExample(null);
+        return getSystemUsers(null);
+    }
+
+    public List<SystemUsers> getSystemUsers(SystemUsersExample example) {
+        SqlSession session = sqlSessionFactory.openSession();
+        SystemUsersMapper dao =
+                session.getMapper(SystemUsersMapper.class);
+
+        List<SystemUsers> dtoUsers
+                = dao.selectByExample(example);
+
+        session.close();
+        return dtoUsers;
     }
 
     public void add(SystemUsers systemUser) {
