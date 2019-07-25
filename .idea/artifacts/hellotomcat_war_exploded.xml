@@ -16,7 +16,6 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.1" />
-          <element id="library" level="project" name="Maven: org.apache.ibatis:ibatis-core:3.0" />
           <element id="archive" name="hello-mysql-1.0-SNAPSHOT.jar">
             <element id="module-output" name="hello-mysql" />
           </element>

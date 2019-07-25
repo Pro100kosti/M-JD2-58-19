@@ -73,11 +73,11 @@
             <artifactId>mybatis</artifactId>
             <version>3.5.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.ibatis</groupId>
-            <artifactId>ibatis-core</artifactId>
-            <version>3.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.ibatis</groupId>-->
+<!--            <artifactId>ibatis-core</artifactId>-->
+<!--            <version>3.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>my.pvt</groupId>
             <artifactId>hello-mysql</artifactId>
@@ -85,16 +85,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.5.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.ibatis</groupId>
-            <artifactId>ibatis-core</artifactId>
-            <version>3.0</version>
         </dependency>
     </dependencies>
 
