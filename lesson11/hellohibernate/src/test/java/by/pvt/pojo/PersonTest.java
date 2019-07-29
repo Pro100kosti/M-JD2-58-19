@@ -19,7 +19,7 @@ public class PersonTest {
         try {
             tx = session.beginTransaction();
             Person p = createTestData();
-            session.save(p);
+            session.saveOrUpdate(p);
             tx.commit();
             session.close();
 
@@ -30,6 +30,14 @@ public class PersonTest {
             assertEquals(1, personList.size());
             Person p2 = personList.get(0);
             assertEquals(p, p2);
+            tx.commit();
+            session.close();
+
+            session = getInstance().getSession();
+            tx = session.beginTransaction();
+            Person loadedPerson = session.get(Person.class, 1);
+            assertEquals(p.getId(), loadedPerson.getId());
+            assertEquals(p, loadedPerson);
             tx.commit();
 
         } catch (Exception e) {
