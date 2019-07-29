@@ -9,9 +9,14 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
+        <option value="$PROJECT_DIR$/lesson11/hellohibernate/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
         <option value="$PROJECT_DIR$/lesson5/hellomysql/pom.xml" />
         <option value="$PROJECT_DIR$/lesson7/hellotomcat/pom.xml" />
-      </list>
+      </set>
     </option>
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
