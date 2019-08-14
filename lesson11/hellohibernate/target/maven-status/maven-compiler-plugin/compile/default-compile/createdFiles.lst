@@ -1,2 +1,3 @@
-by\pvt\util\HibernateUtil.class
 by\pvt\pojo\Person.class
+by\pvt\pojo\Data.class
+by\pvt\util\HibernateUtil.class

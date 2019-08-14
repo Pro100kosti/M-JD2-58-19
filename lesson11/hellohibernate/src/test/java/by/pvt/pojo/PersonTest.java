@@ -1,5 +1,6 @@
 package by.pvt.pojo;
 
+import by.pvt.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
@@ -17,13 +18,14 @@ public class PersonTest {
         Session session = getInstance().getSession();
         Transaction tx = null;
         try {
+            //save
             tx = session.beginTransaction();
             Person p = createTestData();
             session.saveOrUpdate(p);
             tx.commit();
             session.close();
 
-            session = getInstance().getSession();
+            session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             List<Person> personList =
                     session.createQuery("from person").list();
@@ -33,11 +35,31 @@ public class PersonTest {
             tx.commit();
             session.close();
 
-            session = getInstance().getSession();
+            //get
+            session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             Person loadedPerson = session.get(Person.class, 1);
             assertEquals(p.getId(), loadedPerson.getId());
             assertEquals(p, loadedPerson);
+            tx.commit();
+            session.close();
+
+            //update
+            session = HibernateUtil.getInstance().getSession();
+            tx = session.beginTransaction();
+            p.setFirstName("UPDATE");
+            session.update(p);
+            Person p3 = session.get(Person.class, 1);
+            assertEquals("UPDATE", p3.getFirstName());
+            tx.commit();
+            session.close();
+
+            //delete
+            session = HibernateUtil.getInstance().getSession();
+            tx = session.beginTransaction();
+            session.delete(p);
+            List<Person> list = session.createQuery("from person").list();
+            assertEquals(0, list.size());
             tx.commit();
 
         } catch (Exception e) {
