@@ -14,7 +14,6 @@ public class EmployeeDetailsTest {
         employeeDetails.setAddressLine("addressLine" + index);
         employeeDetails.setCity("City" + index);
         employeeDetails.setStreet("Street" + index);
-        //employeeDetails.setEmployee(EmployeeTest.createTestData(index));
         return employeeDetails;
     }
 
