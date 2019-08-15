@@ -7,8 +7,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static by.pvt.util.HibernateUtil.*;
-
 import static org.junit.Assert.*;
 
 public class DataTest {
@@ -40,7 +38,6 @@ public class DataTest {
             Data getData = session.get(Data.class, 1);
             assertEquals(data, getData);
             tx.commit();
-            ;
             session.close();
 
             //update
