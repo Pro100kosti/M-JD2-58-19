@@ -17,13 +17,6 @@ public class DataTest {
         Transaction tx = null;
         try {
             //save
-
-//            tx = session.beginTransaction();
-//            Data data = createData(1);
-//            session.saveOrUpdate(data);
-//            tx.commit();
-//            session.close();
-
             tx = session.beginTransaction();
             Person person = PersonTest.createTestData(1);
             session.save(person);
@@ -31,13 +24,21 @@ public class DataTest {
             session.saveOrUpdate(data);
             data.setPersonId(person);
             session.saveOrUpdate(data);
+
+            Person person2 = PersonTest.createTestData(2);
+            session.save(person2);
+            Data data2 = createData(2);
+            session.saveOrUpdate(data2);
+            data2.setPersonId(person2);
+            session.saveOrUpdate(data2);
+
             tx.commit();
             session.close();
 
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             List<Data> dataList = session.createQuery("from data").list();
-            assertEquals(1, dataList.size());
+            assertEquals(2, dataList.size());
             Data data1 = dataList.get(0);
             assertEquals(data, data1);
             tx.commit();
@@ -62,12 +63,12 @@ public class DataTest {
             session.close();
 
             //delete
-//            session = HibernateUtil.getInstance().getSession();
-//            tx = session.beginTransaction();
-//            session.delete(data2);
-//            List<Data> deleteList = session.createQuery("from data").list();
-//            assertEquals(1, deleteList.size());
-//            tx.commit();
+            session = HibernateUtil.getInstance().getSession();
+            tx = session.beginTransaction();
+            session.delete(data2);
+            List<Data> deleteList = session.createQuery("from data").list();
+            assertEquals(1, deleteList.size());
+            tx.commit();
 
         } catch (Exception e) {
             if (tx != null) tx.rollback();

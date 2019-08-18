@@ -22,6 +22,8 @@ public class PersonTest {
             tx = session.beginTransaction();
             Person person = createTestData(1);
             session.saveOrUpdate(person);
+            Person person3 = createTestData(3);
+            session.saveOrUpdate(person3);
             tx.commit();
             session.close();
 
@@ -29,7 +31,7 @@ public class PersonTest {
             tx = session.beginTransaction();
             List<Person> personList =
                     session.createQuery("from person").list();
-            assertEquals(1, personList.size());
+            assertEquals(3, personList.size());
             Person p2 = personList.get(0);
             assertEquals(person, p2);
             tx.commit();
@@ -55,12 +57,12 @@ public class PersonTest {
             session.close();
 
             //delete
-//            session = HibernateUtil.getInstance().getSession();
-//            tx = session.beginTransaction();
-//            session.delete(person2);
-//            List<Person> list = session.createQuery("from person").list();
-//            assertEquals(1, list.size());
-//            tx.commit();
+            session = HibernateUtil.getInstance().getSession();
+            tx = session.beginTransaction();
+            session.delete(person3);
+            List<Person> list = session.createQuery("from person").list();
+            assertEquals(2, list.size());
+            tx.commit();
 
         } catch (Exception e) {
             if (tx != null) tx.rollback();
