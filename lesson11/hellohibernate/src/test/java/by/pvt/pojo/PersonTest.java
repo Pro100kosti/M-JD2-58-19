@@ -20,8 +20,8 @@ public class PersonTest {
         try {
             //save
             tx = session.beginTransaction();
-            Person p = createTestData();
-            session.saveOrUpdate(p);
+            Person person = createTestData(1);
+            session.saveOrUpdate(person);
             tx.commit();
             session.close();
 
@@ -31,7 +31,7 @@ public class PersonTest {
                     session.createQuery("from person").list();
             assertEquals(1, personList.size());
             Person p2 = personList.get(0);
-            assertEquals(p, p2);
+            assertEquals(person, p2);
             tx.commit();
             session.close();
 
@@ -39,28 +39,28 @@ public class PersonTest {
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
             Person loadedPerson = session.get(Person.class, 1);
-            assertEquals(p.getId(), loadedPerson.getId());
-            assertEquals(p, loadedPerson);
+            assertEquals(person.getId(), loadedPerson.getId());
+            assertEquals(person, loadedPerson);
             tx.commit();
             session.close();
 
             //update
             session = HibernateUtil.getInstance().getSession();
             tx = session.beginTransaction();
-            p.setFirstName("UPDATE");
-            session.update(p);
+            person.setFirstName("UPDATE");
+            session.update(person);
             Person p3 = session.get(Person.class, 1);
             assertEquals("UPDATE", p3.getFirstName());
             tx.commit();
             session.close();
 
             //delete
-            session = HibernateUtil.getInstance().getSession();
-            tx = session.beginTransaction();
-            session.delete(p);
-            List<Person> list = session.createQuery("from person").list();
-            assertEquals(0, list.size());
-            tx.commit();
+//            session = HibernateUtil.getInstance().getSession();
+//            tx = session.beginTransaction();
+//            session.delete(person2);
+//            List<Person> list = session.createQuery("from person").list();
+//            assertEquals(1, list.size());
+//            tx.commit();
 
         } catch (Exception e) {
             if (tx != null) tx.rollback();
@@ -70,11 +70,11 @@ public class PersonTest {
         }
     }
 
-    private static Person createTestData() {
+    static Person createTestData(int index) {
         Person person = new Person();
-        person.setId(1);
-        person.setFirstName("TestUser");
-        person.setLastName("LastName");
+        person.setId(index);
+        person.setFirstName("TestUser" + index);
+        person.setLastName("LastName" + index);
         person.setDateOfBirth(new Date());
         person.setGender('M');
         return person;

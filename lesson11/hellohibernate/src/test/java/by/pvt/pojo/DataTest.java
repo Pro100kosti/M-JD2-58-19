@@ -17,8 +17,19 @@ public class DataTest {
         Transaction tx = null;
         try {
             //save
+
+//            tx = session.beginTransaction();
+//            Data data = createData(1);
+//            session.saveOrUpdate(data);
+//            tx.commit();
+//            session.close();
+
             tx = session.beginTransaction();
-            Data data = createData();
+            Person person = PersonTest.createTestData(1);
+            session.save(person);
+            Data data = createData(1);
+            session.saveOrUpdate(data);
+            data.setPersonId(person);
             session.saveOrUpdate(data);
             tx.commit();
             session.close();
@@ -45,18 +56,18 @@ public class DataTest {
             tx = session.beginTransaction();
             data.setPhone("+37529*******");
             session.update(data);
-            Data data2 = session.get(Data.class, 1);
-            assertEquals("+37529*******", data2.getPhone());
+            Data data3 = session.get(Data.class, 1);
+            assertEquals("+37529*******", data3.getPhone());
             tx.commit();
             session.close();
 
             //delete
-            session = HibernateUtil.getInstance().getSession();
-            tx = session.beginTransaction();
-            session.delete(data);
-            List<Data> deleteList = session.createQuery("from data").list();
-            assertEquals(0, deleteList.size());
-            tx.commit();
+//            session = HibernateUtil.getInstance().getSession();
+//            tx = session.beginTransaction();
+//            session.delete(data2);
+//            List<Data> deleteList = session.createQuery("from data").list();
+//            assertEquals(1, deleteList.size());
+//            tx.commit();
 
         } catch (Exception e) {
             if (tx != null) tx.rollback();
@@ -66,13 +77,12 @@ public class DataTest {
         }
     }
 
-    private static Data createData() {
+    private static Data createData(int index) {
         Data data = new Data();
-        data.setId(1);
-        data.setPersonId(2);
-        data.setPhone("+375297389118");
-        data.setCar("Audi");
-        data.setNumber("8734AB-5");
+        data.setId(index);
+        data.setPhone("+375297389118" + index);
+        data.setCar("Audi" + index);
+        data.setNumber("8734AB-5" + index);
         return data;
     }
 

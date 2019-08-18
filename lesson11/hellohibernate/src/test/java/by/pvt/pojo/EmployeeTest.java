@@ -11,15 +11,6 @@ import static org.junit.Assert.*;
 
 public class EmployeeTest {
 
-    static Employee createTestData(int index) {
-        Employee employee = new Employee();
-        employee.setDateOfBirth(new Date());
-        employee.setEmpNumber(index);
-        employee.setName("Name" + index);
-        employee.setTitle("Employee");
-        return employee;
-    }
-
     @Test
     public void testSaveOrUpdate() {
         Transaction tx = null;
@@ -34,6 +25,15 @@ public class EmployeeTest {
             if (tx != null) tx.rollback();
             assertEquals(true, false);
         }
+    }
+
+    static Employee createTestData(int index) {
+        Employee employee = new Employee();
+        employee.setDateOfBirth(new Date());
+        employee.setEmpNumber(index);
+        employee.setName("Name" + index);
+        employee.setTitle("Employee");
+        return employee;
     }
 
 }
