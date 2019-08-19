@@ -3,9 +3,12 @@ package by.pvt.pojo;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class EmployeeDetails {
+public class EmployeeDetails implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue

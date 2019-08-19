@@ -1,11 +1,16 @@
 package by.pvt.pojo;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @SequenceGenerator(name = "empl_seq", sequenceName = "empl_seq")
-public class Employee {
+public class Employee implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator = "empl_seq", strategy = GenerationType.SEQUENCE)
@@ -21,6 +26,16 @@ public class Employee {
 
     @OneToOne(mappedBy = "employee")
     private EmployeeDetails employeeDetails;
+
+    @ManyToOne
+    private Department department;
+
+    @ManyToMany
+    private List<Project> projects;
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 
     public String getName() {
         return name;
@@ -54,5 +69,9 @@ public class Employee {
         this.empNumber = empNumber;
     }
 
-
+    public void addProject(Project project) {
+        //project.addEmployee(this);
+        if (projects == null) projects = new ArrayList<>();
+        projects.add(project);
+    }
 }

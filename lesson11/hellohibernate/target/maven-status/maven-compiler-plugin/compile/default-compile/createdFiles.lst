@@ -1,5 +1,7 @@
-by\pvt\pojo\Employee.class
-by\pvt\pojo\Person.class
 by\pvt\pojo\Data.class
 by\pvt\pojo\EmployeeDetails.class
+by\pvt\pojo\Department.class
+by\pvt\pojo\Employee.class
+by\pvt\pojo\Person.class
 by\pvt\util\HibernateUtil.class
+by\pvt\pojo\Project.class
