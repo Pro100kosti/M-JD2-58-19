@@ -1,6 +1,6 @@
-by\pvt\pojo\EmployeeTest.class
+by\pvt\repository\EmployeeRepositoryTest.class
 by\pvt\pojo\DepartmentTest.class
-by\pvt\pojo\PersonTest.class
-by\pvt\pojo\DataTest.class
-by\pvt\pojo\EmployeeDetailsTest.class
 by\pvt\pojo\ProjectTest.class
+by\pvt\pojo\EmployeeTest.class
+by\pvt\pojo\PersonTest.class
+by\pvt\pojo\EmployeeDetailsTest.class

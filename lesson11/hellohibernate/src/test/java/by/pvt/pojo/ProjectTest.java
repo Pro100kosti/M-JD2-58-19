@@ -49,6 +49,7 @@ public class ProjectTest {
         session.save(employee1);
         session.save(employee2);
         session.save(employee3);
+
         tx.commit();
         session.close();
 
