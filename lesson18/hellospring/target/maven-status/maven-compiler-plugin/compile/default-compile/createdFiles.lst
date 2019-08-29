@@ -1,0 +1,7 @@
+by\pvt\service\MessageType.class
+by\pvt\component\EmailSender.class
+by\pvt\service\MessageService.class
+by\pvt\cmd\SendMessageCmd.class
+by\pvt\component\EmailSenderImpl.class
+by\pvt\main\Main.class
+by\pvt\pojo\Message.class

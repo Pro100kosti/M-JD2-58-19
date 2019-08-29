@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/M-JD2-58-19.iml" filepath="$PROJECT_DIR$/.idea/M-JD2-58-19.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lesson11/hellohibernate/hello-hibernate.iml" filepath="$PROJECT_DIR$/lesson11/hellohibernate/hello-hibernate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson18/hellospring/hellospring.iml" filepath="$PROJECT_DIR$/lesson18/hellospring/hellospring.iml" />
     </modules>
   </component>
 </project>
