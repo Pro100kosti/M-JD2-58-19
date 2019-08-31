@@ -21,16 +21,19 @@ public class MessageService {
     @Autowired
     UserRepository userRepository;
 
-    public void executeCommand(SendMessageCmd sendMessageCmd) {
+    public boolean executeCommand(SendMessageCmd sendMessageCmd) {
         Message message = new Message();
         message.setFrom(FROM_EMAIL);
-        message.setBody(sendMessageCmd.messageType.getBody());
+        message.setBody(String.format(
+                sendMessageCmd.messageType.getBody(),
+                sendMessageCmd.receiverName
+        ));
         message.setId(new Random().nextLong());
         message.setSubject(sendMessageCmd.messageType.getSubject());
         message.setTo(userRepository.getEmailByUserName(sendMessageCmd.receiverName));
 
         emailSender.send(message);
-
+        return true;
     }
 
 }

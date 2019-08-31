@@ -2,8 +2,8 @@ package by.pvt.service;
 
 public enum MessageType {
 
-    INVITATION_MESSAGE("You are invited to course", "Invitation"),
-    CANCEL_MESSAGE("Course is canceled", "Cancel")
+    INVITATION_MESSAGE("Dear %s, You are invited to course", "Invitation"),
+    CANCEL_MESSAGE("Dear %s, Course is canceled", "Cancel")
     ;
 
     private String body;

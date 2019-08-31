@@ -9,6 +9,6 @@ public class EmailSenderImpl implements EmailSender {
     public void send(Message message) {
         System.out.println("\nSending message...");
         System.out.println(message);
-        System.out.println("Finished sending message.");
+        System.out.println("Finished sending message.\n");
     }
 }

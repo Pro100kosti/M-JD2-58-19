@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 public class UserRepository {
 
     public String getEmailByUserName(String userName){
-        //session.createQery();
+        //session.createQuery();
         return "repository_messager@mail.ru";
     }
 
