@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hello-web-mvc:war">
+    <output-path>$PROJECT_DIR$/lesson20/hellowebmvc/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>hello-web-mvc</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="hello-web-mvc-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="hello-web-mvc:war exploded" />
+    </root>
+  </artifact>
+</component>

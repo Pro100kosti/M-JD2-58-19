@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="hello-web-mvc" />
         <module name="hellospring" />
       </profile>
     </annotationProcessing>
@@ -14,6 +15,7 @@
       <module name="console" target="11" />
       <module name="hello-hibernate" target="11" />
       <module name="hello-mysql" target="11" />
+      <module name="hello-web-mvc" target="11" />
       <module name="hellospring" target="11" />
       <module name="hellotomcat" target="11" />
       <module name="parent" target="11" />
