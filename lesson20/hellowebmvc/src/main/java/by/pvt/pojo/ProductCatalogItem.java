@@ -8,6 +8,7 @@ public class ProductCatalogItem implements Serializable {
     private Long id;
     private String itemName;
     private Double price;
+    private byte[] productImage;
 
     public ProductCatalogItem() {
     }
@@ -40,5 +41,22 @@ public class ProductCatalogItem implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public byte[] getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(byte[] productImage) {
+        this.productImage = productImage;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductCatalogItem{" +
+                "id=" + id +
+                ", itemName='" + itemName + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
