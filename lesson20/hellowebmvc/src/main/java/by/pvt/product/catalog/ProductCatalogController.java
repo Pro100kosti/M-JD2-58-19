@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.logging.Logger;
 
@@ -18,7 +19,8 @@ public class ProductCatalogController {
     private static Logger log = Logger.getLogger(ProductCatalogController.class.getName());
 
     @Autowired
-    private ProductCatalogService productCatalogService;
+    private
+    ProductCatalogService productCatalogService;
 
     @GetMapping()
     public String showCatalog(Model model) {
@@ -33,6 +35,12 @@ public class ProductCatalogController {
         ProductCatalogItem item = productCatalogService.findItem(id);
         model.addAttribute("item", item);
         return "productCatalogItem";
+    }
+
+    @GetMapping("/item/{id}/image")
+    public @ResponseBody
+    byte[] productItemImage(@PathVariable Long id) {
+        return productCatalogService.findItem(id).getProductImage();
     }
 
 }

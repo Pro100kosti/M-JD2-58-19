@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Logger;
 
@@ -30,30 +29,34 @@ public class AddProductController {
     }
 
     @PostMapping
-    public String submitAddProductForm(@ModelAttribute ProductCatalogItem item, @RequestParam("file") MultipartFile file, BindingResult result) throws IOException {
+    public String submitAddProductForm(
+            @ModelAttribute ProductCatalogItem item,
+            @RequestParam("file") MultipartFile file,
+            BindingResult result
+    ) throws IOException {
         log.info("Call submitAddProductForm: " + item);
+
         log.info("File: " + file);
         item.setProductImage(file.getBytes());
-        saveToFile(file);
+        //saveToFile(file);
+
         if (!productCatalogService.addItem(item) || result.hasErrors()) {
             return "addProductError";
         }
         return "addProductOk";
     }
 
-    private boolean saveToFile(MultipartFile file) {
+    /*private boolean saveToFile(MultipartFile file) {
         try (FileOutputStream fos = new FileOutputStream(file.getName())) {
             if (file.isEmpty()) return false;
             byte[] bytes = file.getBytes();
             fos.write(bytes);
             fos.flush();
-            log.info("BYTES: " + new String(bytes));
-
             return true;
         } catch (IOException e) {
             log.severe(e.getMessage());
             return false;
         }
-    }
+    }*/
 
 }
