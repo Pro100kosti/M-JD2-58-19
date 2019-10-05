@@ -10,12 +10,14 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/lesson20/hellowebmvc/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson28/hellosecurity/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/lesson18/hellospring/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson20/hellowebmvc/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson25/hello-spring-boot/pom.xml" />
         <option value="$PROJECT_DIR$/lesson5/hellomysql/pom.xml" />
         <option value="$PROJECT_DIR$/lesson7/hellotomcat/pom.xml" />
       </set>

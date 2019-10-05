@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/M-JD2-58-19.iml" filepath="$PROJECT_DIR$/.idea/M-JD2-58-19.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lesson20/hellowebmvc/hello-web-mvc.iml" filepath="$PROJECT_DIR$/lesson20/hellowebmvc/hello-web-mvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson28/hellosecurity/hello-security.iml" filepath="$PROJECT_DIR$/lesson28/hellosecurity/hello-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/lesson18/hellospring/hellospring.iml" filepath="$PROJECT_DIR$/lesson18/hellospring/hellospring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson26/myspringboot/my-spring-boot.iml" filepath="$PROJECT_DIR$/lesson26/myspringboot/my-spring-boot.iml" />
     </modules>
   </component>
 </project>

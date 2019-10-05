@@ -1,0 +1,6 @@
+by\pvt\data\jpa\domain\City.class
+by\pvt\data\jpa\service\CityRepository.class
+by\pvt\data\jpa\service\HotelRepository.class
+by\pvt\data\jpa\service\CitySearchCriteria.class
+by\pvt\data\jpa\SampleDataRestApplication.class
+by\pvt\data\jpa\domain\Hotel.class
