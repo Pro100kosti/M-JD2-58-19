@@ -10,6 +10,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -29,7 +31,7 @@ import java.util.Properties;
 public class HelloWebMvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Autowired
-    Environment env;
+    private Environment env;
 
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
@@ -65,7 +67,8 @@ public class HelloWebMvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     public LocalSessionFactoryBean localSessionFactoryBean(DataSource dataSource) {
-        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
+        LocalSessionFactoryBean localSessionFactoryBean
+                = new LocalSessionFactoryBean();
 
         localSessionFactoryBean.setDataSource(dataSource);
         localSessionFactoryBean.setHibernateProperties(hibernateProperties());
@@ -87,11 +90,16 @@ public class HelloWebMvcConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+        HibernateTransactionManager transactionManager
+                = new HibernateTransactionManager();
 
         transactionManager.setSessionFactory(sessionFactory);
 
         return transactionManager;
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
