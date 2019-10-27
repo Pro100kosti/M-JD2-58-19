@@ -31,17 +31,18 @@ public class ProductCatalogService {
 
     @Transactional
     public boolean addItem(ProductCatalogItem item) {
-        if (item.getPrice() == null || item.getPrice() <= 0 || item.getItemName() == null || item.getItemName().isEmpty()) {
+        if (item.getPrice() == null || item.getPrice() <= 0 ||
+                item.getItemName() == null || item.getItemName().isEmpty()) {
             return false;
         }
-//        if (item.getId() == null) {
-//            item.setId(generateProductItemId());
-//        }
+        /*if (item.getId() == null) {
+            item.setId(generateProductItemId());
+        }*/
         return productCatalogRepository.add(item);
     }
 
-//    private Long generateProductItemId() {
-//       Long naxId = productCatalogRepository.getMaxId();
-//       return ++naxId;
-//    }
+    /*private Long generateProductItemId() {
+        Long maxId = productCatalogRepository.getMaxId();
+        return ++maxId;
+    }*/
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,12 +17,16 @@ import java.util.logging.Logger;
 
 @Controller
 @RequestMapping("/add-product")
+
 public class AddProductController {
 
     private static Logger log = Logger.getLogger("AddProductController");
 
     @Autowired
     ProductCatalogService productCatalogService;
+
+    @Autowired
+    ProductCatalogItemValidator validator;
 
     @GetMapping
     public ModelAndView showAddProductView() {
@@ -34,8 +39,15 @@ public class AddProductController {
     public String submitAddProductForm(
             @ModelAttribute ProductCatalogItem item,
             @RequestParam("file") MultipartFile file,
-            BindingResult result
+            BindingResult result, Model model
     ) throws IOException {
+        validator.validate(item, result);
+        if (result.hasErrors()) {
+            model.addAttribute("errors", result.getAllErrors());
+            result.getAllErrors().forEach(objectError -> log.info(objectError.getDefaultMessage()));
+            return "addProduct";
+        }
+
         log.info("Call submitAddProductForm: " + item);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         log.info("Username=" + user.getUsername());
@@ -44,7 +56,7 @@ public class AddProductController {
         item.setProductImage(file.getBytes());
         //saveToFile(file);
 
-        if (!productCatalogService.addItem(item) || result.hasErrors()) {
+        if (!productCatalogService.addItem(item)) {
             return "addProductError";
         }
         return "addProductOk";
