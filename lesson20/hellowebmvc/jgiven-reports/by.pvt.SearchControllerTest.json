@@ -1,0 +1,199 @@
+{
+  "className": "by.pvt.SearchControllerTest",
+  "name": "Search Controller",
+  "scenarios": [
+    {
+      "className": "by.pvt.SearchControllerTest",
+      "testMethodName": "searchWithParam",
+      "description": "Search with param",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "casesAsTable": false,
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "web application",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "web application"
+                },
+                {
+                  "value": "org.springframework.web.context.support.GenericWebApplicationContext@4b45a2f5, started on Fri Nov 01 10:46:00 MSK 2019",
+                  "argumentInfo": {
+                    "argumentName": "wac",
+                    "formattedValue": "org.springframework.web.context.support.GenericWebApplicationContext@4b45a2f5, started on Fri Nov 01 10:46:00 MSK 2019"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 5712985
+            },
+            {
+              "name": "user enter correct search string",
+              "words": [
+                {
+                  "value": "user enter correct search string"
+                },
+                {
+                  "value": "test",
+                  "argumentInfo": {
+                    "argumentName": "searchStr",
+                    "formattedValue": "test"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 28312088
+            },
+            {
+              "name": "execute search",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "execute search"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 209473102
+            },
+            {
+              "name": "result size is",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "result size is"
+                },
+                {
+                  "value": "2",
+                  "argumentInfo": {
+                    "argumentName": "size",
+                    "formattedValue": "2"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 823308
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "success": true,
+          "durationInNanos": 379158369
+        }
+      ],
+      "durationInNanos": 379158369,
+      "executionStatus": "SUCCESS"
+    },
+    {
+      "className": "by.pvt.SearchControllerTest",
+      "testMethodName": "search",
+      "description": "Search",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "casesAsTable": false,
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "web application",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "web application"
+                },
+                {
+                  "value": "org.springframework.web.context.support.GenericWebApplicationContext@4b45a2f5, started on Fri Nov 01 10:46:00 MSK 2019",
+                  "argumentInfo": {
+                    "argumentName": "wac",
+                    "formattedValue": "org.springframework.web.context.support.GenericWebApplicationContext@4b45a2f5, started on Fri Nov 01 10:46:00 MSK 2019"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 938271
+            },
+            {
+              "name": "user enter empty search string",
+              "words": [
+                {
+                  "value": "user enter empty search string"
+                },
+                {
+                  "value": "",
+                  "argumentInfo": {
+                    "argumentName": "searchStr",
+                    "formattedValue": ""
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 4414023
+            },
+            {
+              "name": "execute search",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "execute search"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 6847602
+            },
+            {
+              "name": "result size is",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "result size is"
+                },
+                {
+                  "value": "0",
+                  "argumentInfo": {
+                    "argumentName": "size",
+                    "formattedValue": "0"
+                  }
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 585876
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "success": true,
+          "durationInNanos": 15152587
+        }
+      ],
+      "durationInNanos": 15152587,
+      "executionStatus": "SUCCESS"
+    }
+  ],
+  "tagMap": {}
+}

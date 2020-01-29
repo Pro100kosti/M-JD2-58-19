@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="hello-wildfly:war">
+    <output-path>$PROJECT_DIR$/javaee/hello-wildfly/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>hello-wildfly</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="hello-wildfly.war">
+      <element id="artifact" artifact-name="hello-wildfly:war exploded" />
+    </root>
+  </artifact>
+</component>

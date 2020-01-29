@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hellospring" />
+        <module name="hello-wildfly" />
         <module name="hello-security" />
       </profile>
       <profile name="Annotation profile for hello-web-mvc" enabled="true">
@@ -28,6 +29,7 @@
       <module name="hello-security" target="11" />
       <module name="hello-spring-boot" target="1.6" />
       <module name="hello-web-mvc" target="11" />
+      <module name="hello-wildfly" target="1.8" />
       <module name="hellospring" target="11" />
       <module name="hellotomcat" target="11" />
       <module name="my-spring-boot" target="11" />

@@ -1,6 +1,6 @@
 package by.pvt.service;
 
-import by.pvt.TestConfiguration;
+import by.pvt.TestHelloWebMvcConfiguration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.junit.Assert.assertNotNull;
 
-@ContextConfiguration(classes = TestConfiguration.class)
+@ContextConfiguration(classes = TestHelloWebMvcConfiguration.class)
 @WebAppConfiguration
 @RunWith(SpringRunner.class)
 public class ProductCatalogServiceTest {
